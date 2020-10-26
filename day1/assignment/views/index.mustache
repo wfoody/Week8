@@ -1,0 +1,29 @@
+
+<html>
+    <head></head>
+
+    <body>
+
+    <h1>Albums</h1>
+
+    <form method='POST' action='/add-album'>
+        
+        <input type='text' name='albumName' placeholder='Album' required><br><br>
+        <input type='text' name='albumReview' placeholder='Review' required><br><br>
+        <button name="saveButton">Save Album Review</button>
+    </form>
+
+    <ul>
+        {{#posts}}
+        <li>
+        <form method='POST' action='/delete-post'>
+            <label>Album name: {{albumName}}, Review: {{albumReview}}, {{date_created}}</label>
+            <button>Delete</button>
+        </form>
+        </li>
+        {{/posts}}
+    </ul>
+
+    </body>
+
+</html>
