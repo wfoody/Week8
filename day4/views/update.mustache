@@ -1,0 +1,23 @@
+<html>
+    <head></head>
+
+    <body>
+
+    <h1>Update album</h1>
+
+    <form method='POST' action='/update-confirm/{{albumId}}'>
+        
+        <label><b>Name:</b> </label><input type='text' name='name' value='{{name}}' required><br><br>
+        <label><b>Review:</b> </label><input type='text' name='review' value='{{review}}' required><br><br>
+        <label><b>Year:</b> </label><input type='text' name='year' value='{{year}}' required><br><br>
+        <label><b>Genre:</b> </label><input type='text' name='genre' value='{{genre}}' required><br><br>
+
+        {{! <input type='hidden' value={{albumId}} 
+        {{! <input type='hidden' value='{{date_created}}
+        <button>Update album</button>
+    </form>
+
+    
+    </body>
+
+</html>

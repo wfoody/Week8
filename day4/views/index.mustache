@@ -8,20 +8,30 @@
 
     <form method='POST' action='/add-album'>
         
-        <input type='text' name='name' value='{{name}}' placeholder='Album' required><br><br>
-        <input type='text' name='review' value='{{review}}' placeholder='Review' required><br><br>
-        {{! <input type='hidden' value='{{date_created}}
+        <input type='text' name='name' placeholder='Album' required><br><br>
+        <input type='text' name='review' placeholder='Review' required><br><br>
+        <input type='text' name='year' placeholder='Year' required><br><br>
+        <input type='text' name='genre' placeholder='Genre' required><br><br>
         <button name="saveButton">Save Album Review</button>
     </form>
 
     <ul>
         {{#albums}}
         <li>
-        <form method='POST' action='/delete-album'>
-            <label><b>Album:</b> {{name}}<br><br><b>Review:</b> "<i>{{review}}</i>"<br><br><b>Date created:</b> {{createdAt}}</label>
-            <input type='hidden' value={{id}} name='id' />
-            <button>Delete</button>
-        </form>
+            <label><b>Album:</b> {{name}}<br><br><b>Review:</b> "<i>{{review}}</i>"<br><br><b>Year:</b> {{year}}<br><br><b>Genre:</b> {{genre}}<br><br><b>Date created:</b> {{createdAt}}</label><br><br>
+            <form method='POST' action='/delete-album'>
+                <input type='hidden' value={{id}} name='albumId' />
+                <button>Delete</button>
+            </form>
+            <form method='POST' action='/update-album'>
+                <input type='hidden' value={{id}} name='albumId' />
+                <input type='hidden' value={{name}} name='name' />
+                <input type='hidden' value={{review}} name='review' />
+                <input type='hidden' value={{genre}} name='genre' />
+                <input type='hidden' value={{year}} name='year' />
+                <button>Update</button>
+            </form>
+        
         </li>
         {{/albums}}
     </ul>

@@ -33,38 +33,61 @@ app.post('/add-album', (req, res) => {
     const name = req.body.name
     const review = req.body.review
     const year = req.body.year
+    const genre = req.body.genre
 
     // building album object
     let album = models.Album.build({
         name: name,
         review: review,
-        year: year
+        year: year,
+        genre: genre
     })
+
+    console.log(genre)
     // saving album to the database
     album.save().then((savedAlbum) => {
-        res.render('index', savedAlbum.dataValues)
+        console.log(savedAlbum)
+        res.redirect('/')
     }).catch((error) => {
         res.render('error')
     })
 })
 
 app.post('/update-album', (req, res) => {
-
+    
     const name = req.body.name
     const review = req.body.review
     const year = req.body.year
     const albumId = req.body.albumId
+    const genre = req.body.genre
+
+    res.render('update', {name: name, review: review, year: year, albumId: albumId, genre: genre})
+})
+
+
+app.post('/update-confirm/:id', (req, res) => {
+
+    const name = req.body.name
+    const review = req.body.review
+    const year = req.body.year
+    const albumId = req.params.id
+    const genre = req.body.genre
+
+    console.log(req.body)
+
 
     models.Album.update({
         name: name,
         review: review,
-        year: year
+        year: year,
+        genre: genre
     }, {
         where: {
             id: albumId
         }
     }).then(updatedAlbum => {
-        res.redirect('/albums')
+        console.log(updatedAlbum)
+        res.redirect('/')
     })
 })
 
@@ -72,12 +95,13 @@ app.post('/update-album', (req, res) => {
 app.post('/delete-album', (req, res) => {
 
     const albumId = req.body.albumId
+    console.log(albumId)
     models.Album.destroy({
         where: {
             id: albumId
         }
     }).then(deletedAlbum => {
-        res.render('albums')
+        res.redirect('/')
     })
 })
 

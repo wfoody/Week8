@@ -11,7 +11,6 @@ module.exports = {
     return queryInterface.addColumn('Albums', 'genre',{
       type: Sequelize.STRING
     })
-
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -22,5 +21,7 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
     return queryInterface.removeColumn('Albums', 'genre')
+  
   }
+  
 };
