@@ -18,7 +18,7 @@
         {{#posts}}
         <li>
         <form method='POST' action='/delete-album'>
-            <label><b>Album:</b> {{title}}<br><br><b>Review:</b> "{{body}}"<br><br><b>Date created:</b> {{date_created}}</label>
+            <label><b>Album:</b> {{title}}<br><br><b>Review:</b> "<i>{{body}}</i>"<br><br><b>Date created:</b> {{date_created}}</label>
             <input type='hidden' value={{post_id}} name='post_id' />
             <button>Delete</button>
         </form>
